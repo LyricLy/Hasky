@@ -1,0 +1,2 @@
+# Hasky
+Haskell meets Python.

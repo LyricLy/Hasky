@@ -19,10 +19,7 @@ class Env:
         self.funcs[name] = Func(self, name, value)
         self.memos[name] = {}
 
-    def __getattribute__(self, name):
-        if name in ("funcs", "memos"):
-            return super().__getattribute__(name)
-
+    def __getattr__(self, name):
         if name not in self.funcs:
             raise UndefinedNameError("attempting to get an undefined name")
 

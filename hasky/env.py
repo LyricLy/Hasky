@@ -11,8 +11,8 @@ class Env:
         if name in ("funcs", "memos"):
             return super().__setattr__(name, value)
 
-        if type(value) not in (type(lambda: 0), Future):
-            raise NotFunctionError("non-function or future defined")
+        if type(value) != type(lambda: 0):
+            raise NotFunctionError("non-function defined")
         elif name in self.funcs:
             raise RedefinitionError("attempting to define an already-defined name")
 
